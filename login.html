@@ -1,0 +1,136 @@
+<html>
+    <head>
+     <style>
+         
+         body {
+            background-image: linear-gradient(to right,#03a9fc , #f403fc);
+}
+            .div1 {
+            
+              background-color: #e6e6e6;    
+              text-align: center;
+              margin: auto;
+                width: 45%;
+                border: 3px solid black;
+                padding: 10px;
+                margin-top: 5px;
+                border-radius: 8px;
+            }
+
+            input[type=text],[type=password]{
+  width: 70%;
+  padding: 6px 16px;
+  margin: 6px 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  
+}
+input[type=submit] {
+  width: 20%;
+  background-color:#42f596;
+  margin: 8px 0;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+a { color: black; }
+  
+            </style>
+    </head>
+<body onload="checkCookie()"> 
+    <script>
+        function validateForm()
+        {
+                var password = document.getElementById("password").value;
+                if(password == "")
+                {
+                    alert("please Enter user password 1st");
+                }
+                var len = password.length;
+                if(len<8)
+                {
+                    var con1="password must be contain at least 8 character";
+                    document.getElementById("con1").innerHTML= con1;
+
+                }    
+              var id= document.getElementById("user_name").value;
+            
+                  if (id== "")
+                  {
+                      alert("please enter your id");
+                  }
+                var con2="password must be contain at least 1 special charcter";
+                                      var regex = /^[A-Za-z0-9 ]+$/
+ 
+                                    //Validate TextBox value against the Regex.
+                                    var isValid = regex.test(document.getElementById("password").value);
+                                    if (!isValid) {
+                                      //  alert("Contains Special Characters.");
+                                    } else {
+                                        document.getElementById("con2").innerHTML= con2;
+                                    }
+       
+                                }
+        
+        </script>
+        
+<div class="div1">
+      
+<form action="" onsubmit="return validateForm()">
+    <center> 
+        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+              <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+            </svg>
+            </center>
+            
+           <br>
+
+
+  <label ><strong>User Id</strong></label><br>
+  <input type="text" id="user_name"  placeholder="enter ur user id"><br><br>
+  <label>password</label><br>
+  <input type="password" id="password"  placeholder="password"><br><br>
+  <input type="submit" value="Submit">
+</form> 
+<a href="sign_up.html"><p>Don't have account<span style="color:red"> <strong>sign_up</strong></span></p></a></ul>   
+</div>
+<div>
+    <center>      
+<p id="con1" style="color:red"></p>
+<p id="con2" style="color:red"></p>
+</center>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

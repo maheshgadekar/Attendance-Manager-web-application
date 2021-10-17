@@ -1,0 +1,205 @@
+<html>
+
+<head>
+  <style>
+    body {
+      background-image: linear-gradient(to right, #03a9fc, #f403fc);
+    }
+
+    .div1 {
+
+      background-color: #e6e6e6;
+      text-align: center;
+      margin: auto;
+      width: 45%;
+      border: 3px solid black;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+
+
+    }
+
+    input[type=text],
+    [type=password] {
+      width: 70%;
+      padding: 6px 16px;
+      margin: 6px 0;
+      border: 1px solid black;
+      border-radius: 4px;
+
+    }
+
+    input[type=submit] {
+      width: 20%;
+      background-color: #42f596;
+
+
+      margin: 8px 0;
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+
+    a {
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+
+
+    function validate_length() {
+
+      
+      var myInput = document.forms["myForm"]["password"].value;
+     
+          var l =myInput.length;
+
+     if ( (l<=7)) {
+        alert("password must be filled out or it contain at least 8 char");
+      
+        return false;
+        
+      } 
+    
+      
+    }
+
+    function validate_number()
+    {
+      var myInput = document.forms["myForm"]["password"].value;
+
+      var numbers = /[0-9]/g;
+        if (myInput.value.match(numbers)) {
+          return true;
+        } else {
+          return false;
+        }
+
+    }
+
+
+     
+     
+       
+         
+         
+
+
+
+
+
+
+
+      function set_cookies() {
+        var user = document.getElementById("user_name").value;
+        if (user != "" && user != null) {
+          setCookie("username", user, 30);
+        }
+
+      }
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toGMTString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+  </script>
+  <div class="div1">
+
+    <form name="myForm" action="sign.php" method="post" onsubmit="return validate_length()" >
+
+
+      <center>
+        <svg width="6em" height="6em" viewBox="0 0 16 16" class="bi bi-person-check" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M11 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM1.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM6 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6.854.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+        </svg>
+        <h5>registration here.....</h5>
+      </center>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <br>
+
+      <label>Username</label>
+      <input type="text" name="name" id="user_name" placeholder="create user name" required/><br>
+
+
+      <label>Password</label>
+      <input type="password" name="password" id="password" placeholder="password"> <br>
+
+      <center> <button type="submit" name="insert" onclick="set_cookies()">Submit</button></center>
+
+
+
+      <center>
+        <hr style="height:1px;border-width:0;color:gray;background-color:gray">
+      </center>
+
+    </form>
+
+
+
+  </div>
+
+
+  <div id="message">
+    <center>
+      <h3 style="color:whitesmoke;">your password is <b> strong</b>--if all condition are in green color</h3>
+      <p id="letter">A password contain <b>lowercase</b> letter</p>
+      <p id="capital">A password contain<b>capital (uppercase)</b> letter</p>
+      <p id="number">A password contain <b>number</b></p>
+      <p id="length">A password must be <b>8 characters</b></p>
+    </center>
+  </div>
+
+  <script>
+
+      var myInput = document.getElementById("password");
+      var letter = document.getElementById("letter");
+      var capital = document.getElementById("capital");
+      var number = document.getElementById("number");
+      var length = document.getElementById("length");
+
+
+      myInput.onkeyup = function () {
+        // Validate lowercase letters
+        var lowerCaseLetters = /[a-z]/g;
+        if (myInput.value.match(lowerCaseLetters)) {
+          document.getElementById("letter").style.color = "green";
+        } else {
+          document.getElementById("letter").style.color = "red";
+        }
+
+        // Validate capital letters
+        var upperCaseLetters = /[A-Z]/g;
+        if (myInput.value.match(upperCaseLetters)) {
+          document.getElementById("capital").style.color = "green";
+
+        } else {
+          document.getElementById("capital").style.color = "red";
+        }
+
+        // Validate numbers
+        var numbers = /[0-9]/g;
+        if (myInput.value.match(numbers)) {
+          document.getElementById("number").style.color = "green";
+        } else {
+          document.getElementById("number").style.color = "red";
+        }
+
+        // Validate length
+        if (myInput.value.length >= 8) {
+          document.getElementById("length").style.color = "green";
+        } else {
+          document.getElementById("length").style.color = "red";
+        }
+      }
+  </script>
+
+</body>
+
+</html>

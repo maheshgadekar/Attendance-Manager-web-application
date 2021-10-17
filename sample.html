@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<h3>Password Validation</h3>
+<p>Try to submit the form.</p>
+
+
+  <form action="/action_page.php">
+    <label for="usrname">Username</label>
+    <input type="text" id="usrname" name="usrname" required>
+
+    <label for="psw">Password</label>
+    <input type="password" id="psw" name="psw" required>
+    
+    <input type="submit" value="Submit">
+  </form>
+
+
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" >A <b>lowercase</b> letter</p>
+  <p id="capital">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" >A <b>number</b></p>
+  <p id="length">Minimum <b>8 characters</b></p>
+</div>
+				
+<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+
+
+// When the user clicks outside of the password field, hide the message box
+
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    document.getElementById("letter").style.color = "green";
+  } else {
+    document.getElementById("letter").style.color = "red";
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    document.getElementById("capital").style.color = "green";
+    
+  } else {
+    document.getElementById("capital").style.color = "red";
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    document.getElementById("number").style.color = "green";
+  } else {
+    document.getElementById("number").style.color = "red";
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    document.getElementById("length").style.color = "green";
+  } else {
+    document.getElementById("length").style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
